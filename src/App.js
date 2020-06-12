@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import "./App.css";
 import Header from './components/Header'
-import Footer from './components/Footer'
 import Photo from './components/Main/Photo'
 import PhotoInfo from './components/Main/PhotoInfo'
+import Container from './components/Container'
 
 
 
@@ -23,28 +23,36 @@ function App() {
     axios.get(`https://api.nasa.gov/planetary/apod?api_key=WqUhgBeQCzqWZ9dHR9fmTN7OnyyJkMZ5OwXJyv2t`)
     .then(res => {
       setPicData(res.data)
-      console.log(res.data)
+      console.log(res)
     })
     .catch(err => {
       debugger
     })
   }, [])
-
+  const makeStyles = () => {
+    return {
+      body: {
+        backgroundColor: '#404143'
+      }
+    }
+  }
 
   return (
-    <div className="App">
-      <p>
+    <div style={makeStyles().body} className="App">
+      {/* <p>
         Read through the instructions in the README.md file to build your NASA
         app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+      </p> */}
+      
       <Header key={picData.copyright} headerData={picData}/>
-      <div className='photo-container'>
+      <Container className='photo-container'>
         <Photo photoData={picData}/>
-        <PhotoInfo photoInfo={picData}/>
-      </div>
+        <Container>
+          <PhotoInfo photoInfo={picData}/>
+        </Container>
+      </Container>
       <div></div>
       
-      <Footer />
 
 
 

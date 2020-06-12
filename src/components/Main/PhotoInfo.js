@@ -1,4 +1,5 @@
 import React from 'react'
+import InfoContainer from './InfoContainer'
 
 const PhotoInfo = props => {
     
@@ -7,7 +8,7 @@ const PhotoInfo = props => {
 
     return (
         <div className='info-container'>
-            <span>{photoInfo.explanation}</span>
+            <InfoContainer>{photoInfo.explanation}</InfoContainer>
         </div>
     )
     
